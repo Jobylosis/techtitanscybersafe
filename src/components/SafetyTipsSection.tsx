@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import parentChildImg from "@/assets/parent-child-computer.jpg";
+import childLaptopImg from "@/assets/child-laptop.jpg";
+import cyberLockImg from "@/assets/cybersecurity-lock.jpg";
 
 const tips = [
   { num: "01", title: "Keep Personal Info Private", desc: "Never share your full name, address, school, phone number, or passwords online. Think twice before posting." },
@@ -11,7 +14,7 @@ const tips = [
 const SafetyTipsSection = () => {
   return (
     <section className="py-24 px-6">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,6 +25,36 @@ const SafetyTipsSection = () => {
           <p className="text-muted-foreground">5 things every young person should know</p>
           <div className="w-24 h-1 bg-cyber-accent mx-auto rounded-full mt-4" />
         </motion.div>
+
+        {/* Images gallery */}
+        <div className="grid grid-cols-3 gap-4 mb-12">
+          <motion.img
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            src={parentChildImg}
+            alt="Parent guiding child on computer"
+            className="w-full h-48 object-cover rounded-xl border-cyber"
+          />
+          <motion.img
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            src={childLaptopImg}
+            alt="Child using laptop with supervision"
+            className="w-full h-48 object-cover rounded-xl border-cyber"
+          />
+          <motion.img
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            src={cyberLockImg}
+            alt="Cybersecurity concept"
+            className="w-full h-48 object-cover rounded-xl border-cyber"
+          />
+        </div>
 
         <div className="space-y-4">
           {tips.map((tip, i) => (
