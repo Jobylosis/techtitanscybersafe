@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const VideoSection = () => {
   return (
-    <section className="py-24 px-6 gradient-cyber">
+    <section id="video" className="py-24 px-6 gradient-cyber">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

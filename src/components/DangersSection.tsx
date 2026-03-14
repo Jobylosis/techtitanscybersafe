@@ -19,7 +19,7 @@ const references = [
 
 const DangersSection = () => {
   return (
-    <section className="py-24 px-6 gradient-cyber">
+    <section id="dangers" className="py-24 px-6 gradient-cyber">
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
