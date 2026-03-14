@@ -10,7 +10,7 @@ const contacts = [
 
 const EmergencySection = () => {
   return (
-    <section className="py-24 px-6">
+    <section id="emergency" className="py-24 px-6">
       <div className="container mx-auto max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

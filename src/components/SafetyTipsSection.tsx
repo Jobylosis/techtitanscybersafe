@@ -13,7 +13,7 @@ const tips = [
 
 const SafetyTipsSection = () => {
   return (
-    <section className="py-24 px-6">
+    <section id="safety-tips" className="py-24 px-6">
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
