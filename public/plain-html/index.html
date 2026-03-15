@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Titans — Youth Safety in Cyberspace</title>
+  <meta name="description" content="An advocacy initiative by Tech Titans promoting safe, responsible, and positive internet use among young individuals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: hsl(220, 20%, 7%);
+      --fg: hsl(200, 20%, 90%);
+      --card: hsl(215, 25%, 10%);
+      --muted: hsl(210, 15%, 55%);
+      --primary: hsl(200, 80%, 50%);
+      --accent: hsl(160, 70%, 45%);
+      --warning: hsl(35, 90%, 55%);
+      --danger: hsl(0, 70%, 55%);
+      --border-color: hsl(200, 80%, 50%, 0.25);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ========== UTILITIES ========== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .container-sm { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+    .font-display { font-family: 'Orbitron', sans-serif; }
+    .text-glow { text-shadow: 0 0 10px hsl(200 80% 50% / 0.5), 0 0 30px hsl(200 80% 50% / 0.2); }
+    .box-glow {
+      box-shadow: 0 0 15px hsl(200 80% 50% / 0.15), 0 0 40px hsl(200 80% 50% / 0.05), inset 0 1px 0 hsl(200 80% 50% / 0.1);
+    }
+    .border-cyber { border: 1px solid var(--border-color); }
+    .gradient-cyber { background: linear-gradient(135deg, hsl(200 80% 50% / 0.15), hsl(160 70% 45% / 0.1)); }
+    .rounded { border-radius: 12px; }
+    .divider { width: 96px; height: 4px; border-radius: 4px; margin: 16px auto 0; }
+    .section { padding: 96px 24px; }
+    .mb-4 { margin-bottom: 16px; }
+    .mb-6 { margin-bottom: 24px; }
+    .mb-12 { margin-bottom: 48px; }
+    .mb-16 { margin-bottom: 64px; }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: hsl(220 20% 7% / 0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid hsl(200 80% 50% / 0.2);
+    }
+    .navbar-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .navbar-brand { font-family: 'Orbitron', sans-serif; font-weight: 700; color: var(--primary); font-size: 16px; letter-spacing: 2px; }
+    .navbar-links { display: flex; gap: 24px; }
+    .navbar-links a {
+      font-family: 'Orbitron', sans-serif; font-size: 11px; letter-spacing: 2px;
+      color: var(--muted); transition: color 0.3s;
+    }
+    .navbar-links a:hover { color: var(--primary); }
+    @media (max-width: 768px) { .navbar-links { display: none; } }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding-top: 56px;
+      background-image:
+        linear-gradient(hsl(200 80% 50% / 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(200 80% 50% / 0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+    .hero-text { flex: 1; min-width: 300px; }
+    .hero-img-wrap { flex: 1; min-width: 280px; max-width: 480px; }
+    .hero-img-wrap img { border-radius: 16px; }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; letter-spacing: 3px; line-height: 1.15; margin-bottom: 24px; }
+    .hero h1 .line1 { color: var(--primary); }
+    .hero h1 .line2 { color: var(--fg); }
+    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 560px; margin-bottom: 40px; }
+    .hero p strong { color: var(--primary); }
+    .hero-logo { width: 120px; height: 120px; border-radius: 16px; object-fit: cover; margin-bottom: 32px; }
+    .btn-outline {
+      font-family: 'Orbitron', sans-serif; font-size: 12px; letter-spacing: 3px;
+      border: 1px solid var(--border-color); padding: 12px 32px; border-radius: 8px;
+      color: var(--primary); background: transparent; cursor: pointer; transition: background 0.3s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: hsl(200 80% 50% / 0.1); }
+    .hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 128px; background: linear-gradient(to top, var(--bg), transparent); }
+
+    /* ========== ABOUT ========== */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 768px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+    .card { border-radius: 12px; padding: 24px; }
+    .card-icon { font-size: 32px; margin-bottom: 16px; }
+    .card h3 { font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+    .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; font-size: 1.05rem; }
+    .about-text strong { color: var(--primary); }
+    .about-img { width: 100%; border-radius: 12px; }
+
+    /* ========== DANGERS ========== */
+    .danger-card {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: hsl(215 25% 10% / 0.8); border-radius: 12px; padding: 24px;
+    }
+    .danger-icon { font-size: 28px; flex-shrink: 0; }
+    .danger-card h3 { font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+    .danger-card p { color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+    /* ========== SAFETY TIPS ========== */
+    .tip-card {
+      display: flex; gap: 20px; align-items: flex-start;
+      border-radius: 12px; padding: 20px;
+    }
+    .tip-num { font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 700; color: hsl(200 80% 50% / 0.3); }
+    .tip-card h3 { font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .tip-card p { color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .gallery-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .gallery-3 img { width: 100%; height: 192px; object-fit: cover; border-radius: 12px; }
+    @media (max-width: 600px) { .gallery-3 { grid-template-columns: 1fr; } }
+
+    /* ========== VIDEO ========== */
+    .video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 16px; overflow: hidden; }
+    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+    /* ========== EMERGENCY ========== */
+    .contact-card {
+      display: flex; align-items: center; gap: 16px;
+      border-radius: 12px; padding: 20px; background: hsl(215 25% 10% / 0.6);
+      margin-bottom: 16px;
+    }
+    .contact-icon { font-size: 24px; }
+    .contact-card .label { font-family: 'Orbitron', sans-serif; font-size: 12px; font-weight: 600; }
+    .contact-card .number { color: var(--primary); font-size: 1.2rem; font-weight: 700; font-family: 'Orbitron', sans-serif; }
+
+    /* ========== REFERENCES ========== */
+    .ref-box { border-radius: 12px; padding: 24px; }
+    .ref-box h3 { font-family: 'Orbitron', sans-serif; font-size: 11px; letter-spacing: 3px; color: var(--primary); margin-bottom: 16px; }
+    .ref-box ul { list-style: none; }
+    .ref-box li { margin-bottom: 8px; }
+    .ref-box a { color: var(--muted); font-size: 13px; transition: color 0.3s; }
+    .ref-box a:hover { color: var(--primary); }
+    .ref-box a::before { content: "↗ "; }
+
+    /* ========== FOOTER ========== */
+    .footer { border-top: 1px solid hsl(210 30% 18%); padding: 48px 24px; text-align: center; }
+    .footer-logo { width: 64px; height: 64px; border-radius: 8px; object-fit: cover; margin: 0 auto 16px; }
+    .footer-brand { font-family: 'Orbitron', sans-serif; font-size: 12px; color: var(--primary); letter-spacing: 3px; margin-bottom: 8px; }
+    .footer p { color: var(--muted); font-size: 13px; max-width: 500px; margin: 0 auto; }
+    .footer .copy { color: hsl(210 15% 55% / 0.5); font-size: 11px; margin-top: 24px; }
+
+    /* heading colors */
+    .text-primary { color: var(--primary); }
+    .text-accent { color: var(--accent); }
+    .text-warning { color: var(--warning); }
+    .text-danger { color: var(--danger); }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-brand">TECH TITANS</a>
+      <div class="navbar-links">
+        <a href="#about">Advocacy</a>
+        <a href="#dangers">Online Dangers</a>
+        <a href="#safety-tips">Safety Tips</a>
+        <a href="#video">Video</a>
+        <a href="#emergency">Emergency</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <img src="images/tech-titans-logo.jpg" alt="Tech Titans Logo" class="hero-logo box-glow" />
+          <h1 class="font-display text-glow">
+            <span class="line1">YOUTH SAFETY</span><br />
+            <span class="line2">IN CYBERSPACE</span>
+          </h1>
+          <p>An advocacy initiative by <strong>Tech Titans</strong> promoting safe, responsible, and positive internet use among young individuals.</p>
+          <a href="#about" class="btn-outline">LEARN MORE ↓</a>
+        </div>
+        <div class="hero-img-wrap">
+          <img src="images/child-safety-shield.jpg" alt="Child online safety" class="border-cyber box-glow" />
+        </div>
+      </div>
+    </div>
+    <div class="hero-fade"></div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-primary text-glow" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;">ABOUT THE ADVOCACY</h2>
+        <div class="divider" style="background:var(--primary);"></div>
+      </div>
+
+      <div class="grid-2 mb-16">
+        <div>
+          <img src="images/child-cyber-lock.jpg" alt="Youth cyber security" class="about-img border-cyber box-glow" />
+        </div>
+        <div class="about-text" style="display:flex;flex-direction:column;justify-content:center;">
+          <p>Youth Safety in Cyberspace aims to give awareness about the risks that the youth may encounter online, by providing guidance, education, and resources that will help them navigate and be protected in the digital world.</p>
+          <p>Young people aged 15 to 24 are more likely to use the Internet than the rest of the population. According to estimates, <strong>82%</strong> of people aged between 15 and 24 used the Internet in 2025.</p>
+        </div>
+      </div>
+
+      <div class="grid-3 mb-16">
+        <div class="card gradient-cyber border-cyber box-glow">
+          <div class="card-icon">🌐</div>
+          <h3>Cyberspace</h3>
+          <p>The virtual space where people communicate and engage through interconnected networks. The internet has become essential for learning, communication, and entertainment.</p>
+        </div>
+        <div class="card gradient-cyber border-cyber box-glow">
+          <div class="card-icon">🛡️</div>
+          <h3>Protection</h3>
+          <p>Over a third of young people in 30 countries report being cyberbullied. 80% of children feel in danger of sexual abuse online.</p>
+        </div>
+        <div class="card gradient-cyber border-cyber box-glow">
+          <div class="card-icon">👥</div>
+          <h3>Community</h3>
+          <p>The Child Online Protection (COP) Initiative by ITU promotes awareness and develops tools to assist governments, industry, and educators.</p>
+        </div>
+      </div>
+
+      <div class="mb-16 text-center">
+        <img src="images/be-cyber-safe.jpg" alt="Be Cyber Safe" style="max-width:640px;margin:0 auto;" class="rounded border-cyber box-glow" />
+      </div>
+
+      <div class="ref-box gradient-cyber border-cyber">
+        <h3>REFERENCES</h3>
+        <ul>
+          <li><a href="https://www.un.org/en/global-issues/child-and-youth-safety-online" target="_blank" rel="noopener noreferrer">UN — Child &amp; Youth Safety Online</a></li>
+          <li><a href="https://raisingchildren.net.au/teens/entertainment-technology/cyberbullying-online-safety/internet-safety-teens" target="_blank" rel="noopener noreferrer">Raising Children — Internet Safety for Teens</a></li>
+          <li><a href="https://www.jhah.com/en/news-events/news-articles/internet-safety-tips-for-kids-in-cyberspace/" target="_blank" rel="noopener noreferrer">JHAH — Internet Safety Tips for Kids</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ONLINE DANGERS ===== -->
+  <section id="dangers" class="section gradient-cyber">
+    <div class="container">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-danger" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;">ONLINE DANGERS</h2>
+        <p style="color:var(--muted);">Threats that children and teens face in cyberspace</p>
+        <div class="divider" style="background:var(--danger);"></div>
+      </div>
+
+      <div class="grid-2 mb-12">
+        <img src="images/child-tablet.jpg" alt="Child using tablet in the dark" class="rounded border-cyber" />
+        <img src="images/kids-phones.jpg" alt="Kids using smartphones" class="rounded border-cyber" />
+      </div>
+
+      <div class="grid-2 mb-12">
+        <div class="danger-card border-cyber">
+          <div class="danger-icon">⚠️</div>
+          <div>
+            <h3>Cyberbullying</h3>
+            <p>Over a third of young people report being cyberbullied, with 1 in 5 skipping school because of it.</p>
+          </div>
+        </div>
+        <div class="danger-card border-cyber">
+          <div class="danger-icon">👁️</div>
+          <div>
+            <h3>Online Exploitation</h3>
+            <p>80% of children in 25 countries report feeling in danger of sexual abuse or exploitation online.</p>
+          </div>
+        </div>
+        <div class="danger-card border-cyber">
+          <div class="danger-icon">🔒</div>
+          <div>
+            <h3>Privacy &amp; Identity Theft</h3>
+            <p>Sharing personal details can make young users vulnerable to identity theft, scams, and online predators.</p>
+          </div>
+        </div>
+        <div class="danger-card border-cyber">
+          <div class="danger-icon">⏰</div>
+          <div>
+            <h3>Excessive Screen Time</h3>
+            <p>Too much screen time negatively affects physical health, academic performance, sleep patterns, and mental wellbeing.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ref-box border-cyber" style="background:hsl(215 25% 10% / 0.5);">
+        <h3>REFERENCES</h3>
+        <ul>
+          <li><a href="https://kidshealth.org/en/teens/internet-safety.html" target="_blank" rel="noopener noreferrer">KidsHealth — Internet Safety</a></li>
+          <li><a href="https://www.unicef.org/philippines/stories/young-people-philippines-speak-out-online-safety" target="_blank" rel="noopener noreferrer">UNICEF Philippines — Online Safety</a></li>
+          <li><a href="https://offensoacademy.com/children-in-cyberspace/" target="_blank" rel="noopener noreferrer">Offenso Academy — Children in Cyberspace</a></li>
+          <li><a href="https://fosi.org/talking-to-youth-about-cyber-safety-and-technology-use-is-important-are-we-having-those-conversations/" target="_blank" rel="noopener noreferrer">FOSI — Talking to Youth About Cyber Safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SAFETY TIPS ===== -->
+  <section id="safety-tips" class="section">
+    <div class="container">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-accent" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;">SAFETY TIPS</h2>
+        <p style="color:var(--muted);">5 things every young person should know</p>
+        <div class="divider" style="background:var(--accent);"></div>
+      </div>
+
+      <div class="gallery-3 mb-12">
+        <img src="images/parent-child-computer.jpg" alt="Parent guiding child on computer" class="border-cyber" />
+        <img src="images/child-laptop.jpg" alt="Child using laptop with supervision" class="border-cyber" />
+        <img src="images/cybersecurity-lock.jpg" alt="Cybersecurity concept" class="border-cyber" />
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="tip-card gradient-cyber border-cyber box-glow">
+          <span class="tip-num">01</span>
+          <div>
+            <h3>Keep Personal Info Private</h3>
+            <p>Never share your full name, address, school, phone number, or passwords online. Think twice before posting.</p>
+          </div>
+        </div>
+        <div class="tip-card gradient-cyber border-cyber box-glow">
+          <span class="tip-num">02</span>
+          <div>
+            <h3>Be Careful Who You Talk To</h3>
+            <p>Only interact with people you know and trust. Avoid meeting strangers without informing a parent or guardian.</p>
+          </div>
+        </div>
+        <div class="tip-card gradient-cyber border-cyber box-glow">
+          <span class="tip-num">03</span>
+          <div>
+            <h3>Use Strong Passwords</h3>
+            <p>Create strong, unique passwords. Use two-factor authentication and set social media profiles to private.</p>
+          </div>
+        </div>
+        <div class="tip-card gradient-cyber border-cyber box-glow">
+          <span class="tip-num">04</span>
+          <div>
+            <h3>Report &amp; Block Harmful Content</h3>
+            <p>Report cyberbullying, scams, or inappropriate content immediately. Block users spreading negativity.</p>
+          </div>
+        </div>
+        <div class="tip-card gradient-cyber border-cyber box-glow">
+          <span class="tip-num">05</span>
+          <div>
+            <h3>Balance Online &amp; Offline</h3>
+            <p>Limit screen time. Engage in hobbies, sports, and face-to-face interactions for mental and emotional health.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO ===== -->
+  <section id="video" class="section gradient-cyber">
+    <div class="container-sm">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-primary text-glow" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;">WATCH &amp; LEARN</h2>
+        <p style="color:var(--muted);">Learn more about staying safe online</p>
+        <div class="divider" style="background:var(--primary);"></div>
+      </div>
+      <div class="video-wrap border-cyber box-glow">
+        <iframe
+          src="https://www.youtube.com/embed/P_65PSRrSww"
+          title="Youth Safety in Cyberspace"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EMERGENCY ===== -->
+  <section id="emergency" class="section">
+    <div class="container-sm">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-warning" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;">EMERGENCY &amp; SUPPORT</h2>
+        <p style="color:var(--muted);">If you or someone you know needs help, reach out</p>
+        <div class="divider" style="background:var(--warning);"></div>
+      </div>
+
+      <div class="contact-card border-cyber">
+        <div class="contact-icon">📞</div>
+        <div>
+          <p class="label">PH National Cybercrime Hotline</p>
+          <p class="number">1326</p>
+        </div>
+      </div>
+      <div class="contact-card border-cyber">
+        <div class="contact-icon">📞</div>
+        <div>
+          <p class="label">PNP Anti-Cybercrime Group</p>
+          <p class="number">(02) 8414-1560 / (02) 723-0401 loc 7491</p>
+        </div>
+      </div>
+      <div class="contact-card border-cyber">
+        <div class="contact-icon">📞</div>
+        <div>
+          <p class="label">DSWD Makabata Helpline</p>
+          <p class="number">1383</p>
+        </div>
+      </div>
+      <div class="contact-card border-cyber">
+        <div class="contact-icon">📞</div>
+        <div>
+          <p class="label">Hopeline PH (Mental Health)</p>
+          <p class="number">(02) 805-4673 / 0917-558-4673 / Toll-free: 2919</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <img src="images/tech-titans-logo.jpg" alt="Tech Titans" class="footer-logo" />
+    <p class="footer-brand font-display">TECH TITANS</p>
+    <p>Youth Safety in Cyberspace — Promoting safe, responsible, and positive internet use among young individuals.</p>
+    <p class="copy">© 2025 Tech Titans. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
